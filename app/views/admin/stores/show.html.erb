@@ -1,2 +1,14 @@
 <h1>Admin::StoresController#show</h1>
 <p>Find me in app/views/admin/admin/stores/show.html.erb</p>
+
+<%= @store.name  %>
+<% if @store.phone %>
+    <br>
+    <%= @store.phone %>
+    <br>
+<% else %>
+    <center><h1>PORPENDEJO</h1></center>
+    <br>
+<% end %>
+
+<%= link_to 'Back', admin_stores_path %>

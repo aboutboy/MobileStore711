@@ -1,0 +1,9 @@
+<h1>Admin::ProductStores#new</h1>
+<p>Find me in app/views/admin/product_stores/new.html.erb</p>
+
+<%= form_for [:admin, @store, @product_store] do |f| %>
+    <label>Product ID:</label>
+    <%= f.select(:product_id, Product.all.collect {|a| [a.name, a.id]})%>
+    <br>
+    <%= f.submit 'Save' %>
+<% end %>

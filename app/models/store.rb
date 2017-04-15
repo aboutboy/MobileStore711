@@ -4,4 +4,7 @@ class Store < ApplicationRecord
   validates :opening_hour, presence: true
   validates :closing_hour, presence: true
   validates :phone, presence: true
+
+  has_many :product_stores, dependent: :destroy
+  has_many :products, through: :product_stores
 end

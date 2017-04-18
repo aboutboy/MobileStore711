@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407004528) do
+ActiveRecord::Schema.define(version: 20170418012136) do
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "product_id", null: false
+    t.integer  "order_id",   null: false
+    t.integer  "amount",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_stores", force: :cascade do |t|
+    t.integer  "store_id",   null: false
+    t.integer  "order_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "payment_method", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.integer  "total_cost"
+    t.integer  "store_id"
+  end
 
   create_table "product_stores", force: :cascade do |t|
     t.integer  "store_id",   null: false
     t.integer  "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "amount"
   end
 
   create_table "products", force: :cascade do |t|
@@ -34,6 +59,14 @@ ActiveRecord::Schema.define(version: 20170407004528) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "phone",        limit: 10
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "username",   null: false
+    t.string   "password",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

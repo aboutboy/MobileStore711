@@ -2,7 +2,10 @@
 <p>Find me in app/views/admin/product_stores/index.html.erb</p>
 
 <% @product_stores.each do |product_store| %>
-    <%= product_store.product.name %>
+      <%= product_store.product.name %>
+      <%= product_store.amount %>
+      <%= link_to 'Delete Product',admin_store_product_store_path(@store,product_store),method: :delete %>
+      <%= link_to 'Edit Amount', edit_admin_store_product_store_path(@store,product_store)%>
     <br>
 <% end %>
 

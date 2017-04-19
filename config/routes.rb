@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'stores/index'
-  end
-
-  namespace :api do
-    get 'stores/show'
-  end
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'landing#welcome'
 
@@ -17,14 +9,19 @@ Rails.application.routes.draw do
     end
 
     resources :orders do
-      resources :order_stores do
         resources :order_products
-      end
     end
+
+    resources :users
   end
 
   namespace :api do
     resources :stores, only: [:index, :show]
+    resources :product_stores, only: [] do
+      collection{
+        post 'get_products_from_store'
+      }
+    end
   end
 
 end

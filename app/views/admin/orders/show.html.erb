@@ -1,2 +1,12 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<%= @order.id  %>
+<br>
+<%= @order.payment_method  %>
+<br>
+<%= @order.user.username %>
+<br>
+<%= @order.store.address  %>
+<br>
+<%= @order.total_cost  %>
+<br>
+
+<%= link_to 'Back', admin_orders_path %>

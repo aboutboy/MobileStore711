@@ -1,0 +1,7 @@
+<% @order_products.each do |order_product| %>
+    <%= order_product.product.name %>
+    <%= order_product.amount %>
+    <br>
+<% end %>
+
+<%= link_to 'Back', admin_orders_path %>

@@ -1,10 +1,14 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < AdminController
   def index
     @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  def new
+    @order = Order.new
   end
 
   def destroy
@@ -19,6 +23,6 @@ class Admin::OrdersController < ApplicationController
   protected
 
   def order_params
-    params.require(:order).permit(:payment_method)
+    params.require(:order).permit(:payment_method,:user_id,:total_cost,:store_id)
   end
 end

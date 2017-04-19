@@ -7,6 +7,5 @@ class Store < ApplicationRecord
 
   has_many :product_stores, dependent: :destroy
   has_many :products, through: :product_stores
-  has_many :order_stores, dependent: :destroy
-  has_many :orders, through: :order_stores
+  has_many :orders, dependent: :destroy
 end

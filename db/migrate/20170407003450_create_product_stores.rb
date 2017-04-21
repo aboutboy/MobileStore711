@@ -6,6 +6,5 @@ class CreateProductStores < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_foreign_key :product_stores, :stores
-    add_foreign_key :product_stores, :products
   end
 end

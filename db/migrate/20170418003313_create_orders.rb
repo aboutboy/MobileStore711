@@ -6,6 +6,5 @@ class CreateOrders < ActiveRecord::Migration[5.0]
     end
 
     add_foreign_key :order_products, :orders
-    add_foreign_key :order_stores, :orders
   end
 end

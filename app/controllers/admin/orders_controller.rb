@@ -23,6 +23,6 @@ class Admin::OrdersController < AdminController
   protected
 
   def order_params
-    params.require(:order).permit(:payment_method,:user_id,:total_cost,:store_id)
+    params.require(:order).permit(:payment_method,:user_id,:total_cost,:store_id, :pickup_date)
   end
 end

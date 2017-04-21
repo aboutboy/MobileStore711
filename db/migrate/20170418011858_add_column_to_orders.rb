@@ -4,6 +4,6 @@ class AddColumnToOrders < ActiveRecord::Migration[5.0]
     add_column :orders, :total_cost, :integer
     add_column :orders, :store_id, :integer
   end
-  #add_foreign_key :orders, :stores
-  #add_foreign_key :orders, :users
+  add_foreign_key :orders, :stores
+  add_foreign_key :orders, :users
 end

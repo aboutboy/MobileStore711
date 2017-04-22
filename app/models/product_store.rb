@@ -7,10 +7,10 @@ class ProductStore < ApplicationRecord
         include: {
             product:{
                 #only [:name]
-            },
-            store: {
+            }#,
+            #store: {
 
-            }
+            #}
         }
     }
   end

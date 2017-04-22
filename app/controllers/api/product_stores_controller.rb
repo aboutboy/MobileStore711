@@ -3,7 +3,7 @@ class Api::ProductStoresController < ApiController
     #@product_stores = ProductStore.joins(:product).where(products: {category_id: params[:category_id]}).where(store_id: params[:store_id])
     @product_stores = ProductStore.where(store_id: params[:store_id])
 
-    if @product_stores
+    if !@product_stores.empty?
       render json: {success: true, product_stores: @product_stores.as_json(ProductStore::Json::LIST)}
     else
       render json: {success: false}

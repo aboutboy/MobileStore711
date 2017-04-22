@@ -1,11 +1,22 @@
 class Api::StoresController < ApiController
+
   def index
     @stores = Store.all
-    render json: @stores.as_json
+
+    if @stores
+      render json: {success: true, stores: @stores.as_json}
+    else
+      render json: {success: false}
+    end
   end
 
   def show
     @store = Store.find(params[:id])
-    render json: @store.as_json
+
+    if @store
+      render json: {success: true, store: @store.as_json}
+    else
+      render json: {success: false}
+    end
   end
 end

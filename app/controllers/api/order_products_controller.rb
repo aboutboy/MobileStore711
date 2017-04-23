@@ -10,7 +10,7 @@ class Api::OrderProductsController < ApiController
 
     end
 
-    render json: {message: 'Created.'}
+    render json: {success: true}
   end
 
   def get_products_from_order

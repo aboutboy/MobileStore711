@@ -2,9 +2,9 @@ class Api::OrdersController < ApiController
   def get_user_orders
     orders = Order.where(user_id: params[:user_id])
     if orders
-      render json: orders.as_json
+      render json: {success: true, orders: orders.as_json}
     else
-      render json: {message: 'No orders available.'}
+      render json: {success: false}
     end
   end
 
@@ -20,7 +20,7 @@ class Api::OrdersController < ApiController
   def create
     order = Order.new(order_params)
     if order.save
-      render json: {success: true, message: 'Order successfully placed.'}
+      render json: {success: true, order: order.as_json}
     else
       render json: {success: false, message: 'Error when placing order.'}, status: 422
     end

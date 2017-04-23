@@ -2,7 +2,7 @@ class Api::OrdersController < ApiController
   def get_user_orders
     orders = Order.where(user_id: params[:user_id])
     if orders
-      render json: {success: true, orders: orders.as_json}
+      render json: {success: true, orders: orders.as_json(Order::Json::LIST)}
     else
       render json: {success: false}
     end

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :product_stores, only: [] do
       collection{
         post 'get_products_from_store'
+        post 'get_product_from_store'
       }
     end
 

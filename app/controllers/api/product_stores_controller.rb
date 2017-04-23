@@ -8,6 +8,15 @@ class Api::ProductStoresController < ApiController
     else
       render json: {success: false}
     end
+  end
 
+  def get_product_from_store
+    product_store = ProductStore.where(store_id: params[:store_id], product_id: params[:product_id])
+
+    if product_store
+      render json: {success: true, product_store: product_store.as_json(ProductStore::Json::LIST)}
+    else
+      render json: {success: false}
+    end
   end
 end

@@ -4,9 +4,9 @@ class Api::OrderProductsController < ApiController
   def create
     order_products = params[:products]
     order_products.each do |order_product|
-      @order.order_products.create(product_id: order_product[:product_id], amount: order_product[:amount])
-      product_store = @order.store.product_stores.find_by(product_id: order_product[:product_id])
-      product_store.decrement!('amount', order_product[:amount])
+      @order.order_products.create(product_id: order_product[:product_id].to_i, amount: order_product[:amount].to_i)
+      product_store = @order.store.product_stores.find_by(product_id: order_product[:product_id].to_i)
+      product_store.decrement!('amount', order_product[:amount].to_i)
 
     end
 
@@ -26,6 +26,6 @@ class Api::OrderProductsController < ApiController
   protected
 
   def load_order
-    @order = Order.find(params[:order_id])
+    @order = Order.find(params[:order_id].to_i)
   end
 end

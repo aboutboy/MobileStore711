@@ -1,14 +1,47 @@
-<%= form_for [:admin,@user] do |f| %>
-    <label>Name:</label>
-    <%= f.text_field :name %> <br>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-    <label>Username:</label>
-    <%= f.text_field :username %> <br>
+<!-- Nav Bar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
+    <%= link_to '7-Eleven Stores', root_path %>
+    <div class="w3-right w3-hide-small">
+      <%= link_to 'Stores', admin_stores_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Products', admin_products_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Users', admin_users_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Orders', admin_orders_path, class: "w3-bar-item w3-button" %>
 
-    <label>Password:</label>
-    <%= f.text_field :password %> <br>
+    </div>
+  </div>
+</div>
 
-    <%= f.submit 'Save' %>
-<% end %>
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
 
-<%= link_to 'Back', admin_users_path %>
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Edit User</h3>
+  </div>
+
+  <!-- User Info -->
+  <div class="w3-container">
+    <%= form_for [:admin,@user] do |f| %>
+        <h4 class="w3-opacity">Name</h4><%= f.text_field :name , class: "w3-input", placeholder: "Name"%>
+        <br>
+        <h4 class="w3-opacity">Username</h4><%= f.text_field :username, class: "w3-input w3-section", placeholder: "Username"%>
+        <br>
+        <h4 class="w3-opacity">Password</h4><%= f.password_field :password,class: "w3-input w3-section", placeholder: "Password" %>
+        <br>
+        <%= f.submit 'Save' , class: "w3-button w3-black w3-section"%>
+    <% end %>
+    <%= button_to 'Back', admin_users_path ,class: "w3-button w3-red w3-section", method: :get%>
+  </div>
+
+</div>
+
+</body>

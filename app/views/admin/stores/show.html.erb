@@ -1,14 +1,48 @@
-<h1>Admin::StoresController#show</h1>
-<p>Find me in app/views/admin/admin/stores/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-<%= @store.name  %>
-<% if @store.phone %>
-    <br>
-    <%= @store.phone %>
-    <br>
-<% else %>
-    <center><h1>PORPENDEJO</h1></center>
-    <br>
-<% end %>
+<!-- Nav Bar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
+    <%= link_to '7-Eleven Stores', root_path %>
+    <div class="w3-right w3-hide-small">
+      <%= link_to 'Stores', admin_stores_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Products', admin_products_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Users', admin_users_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Orders', admin_orders_path, class: "w3-bar-item w3-button" %>
 
-<%= link_to 'Back', admin_stores_path %>
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><%= @store.name %></h3>
+  </div>
+
+  <div class="w3-container">
+    <div class="w3-row-padding">
+          <div class="w3-col l5 m6 w3-margin-bottom">
+            <div class="w3-display-container">
+              <img src="<%= asset_path( '711Store.jpeg' ) %>" style="width:100%">
+            </div>
+            <br>
+            <h1>Address</h1> <%= @store.address %>
+            <h1>Phone</h1> <%= @store.phone %>
+          </div>
+    </div>
+
+    <%= link_to 'Back', admin_stores_path, class: "w3-button w3-red w3-section" %>
+
+  </div>
+
+
+</div>
+</body>

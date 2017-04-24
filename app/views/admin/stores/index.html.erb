@@ -1,14 +1,58 @@
-<h1>Admin::StoresController#index</h1>
-<p>Find me in app/views/admin/admin/stores/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-<% @stores.each do |store| %>
-    <H1> <%= store.name %> </H1>
-    <%= link_to 'Details', admin_store_path(store) %>
-    <%= link_to 'Edit Store', edit_admin_store_path(store) %>
-    <%= link_to 'Delete', admin_store_path(store),method: :delete %>
-    <%= link_to 'Available Products', admin_store_product_stores_path(store) %>
-    <br>
-<% end %>
+<!-- Nav Bar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
+    <%= link_to '7-Eleven Stores', root_path %>
+    <div class="w3-right w3-hide-small">
+      <%= link_to 'Stores', admin_stores_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Products', admin_products_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Users', admin_users_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Orders', admin_orders_path, class: "w3-bar-item w3-button" %>
 
-<%= link_to 'Add Store', new_admin_store_path() %>
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Stores</h3>
+    <div align="left">
+      <%= button_to 'Add Store', new_admin_store_path() ,class: "w3-button w3-green w3-section", method: :get%>
+    </div>
+  </div>
+
+  <div class="w3-container">
+    <div class="w3-row-padding">
+    <% @stores.each do |store| %>
+          <div class="w3-col l3 m6 w3-margin-bottom">
+            <div class="w3-display-container">
+              <div class="w3-display-topleft w3-black w3-padding"><%= store.name %></div>
+              <img src="<%= asset_path( '711Store.jpeg' ) %>" style="width:100%">
+            </div>
+            <br>
+            <%= link_to 'Details', admin_store_path(store) , class: "w3-button w3-light-grey"%>
+            <%= link_to 'Edit', edit_admin_store_path(store) , class: "w3-button w3-light-grey"%>
+            <%= link_to 'Products', admin_store_product_stores_path(store), class: "w3-button w3-light-grey" %>
+            <%= link_to 'Delete', admin_store_path(store), class: "w3-button w3-light-grey", method: :delete %>
+          </div>
+    <% end %>
+    </div>
+
+  </div>
+
+
+</div>
+</body>
+
+
 

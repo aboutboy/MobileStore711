@@ -1,3 +1,52 @@
-<%= render 'form' %>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-<%= link_to 'Back', admin_stores_path %>
+<!-- Nav Bar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
+    <%= link_to '7-Eleven Stores', root_path %>
+    <div class="w3-right w3-hide-small">
+      <%= link_to 'Stores', admin_stores_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Products', admin_products_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Users', admin_users_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Orders', admin_orders_path, class: "w3-bar-item w3-button" %>
+
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Edit Store</h3>
+  </div>
+
+  <!-- User Info -->
+  <div class="w3-container">
+    <div>
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+    <%= form_for [:admin,@store] do |f| %>
+        <h4 class="w3-opacity">Name</h4><%= f.text_field :name, class: "w3-input w3-section", placeholder: "Name" %> <br>
+        <h4 class="w3-opacity">Address</h4><%= f.text_field :address, class: "w3-input w3-section", placeholder: "Address" %> <br>
+        <h4 class="w3-opacity">Phone</h4><%= f.text_field :phone , class: "w3-input w3-section", placeholder: "Phone", maxlength: 10%> <br>
+
+        <%= f.submit 'Save' , class: "w3-button w3-black w3-section"%>
+        <%= link_to 'Back', admin_stores_path ,class: "w3-button w3-red w3-section", method: :get %>
+    <% end %>
+
+  </div>
+
+</div>
+
+</body>

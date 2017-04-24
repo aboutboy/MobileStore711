@@ -35,7 +35,7 @@
   <div class="w3-row-padding w3-grayscale">
   <% @users.each do |user| %>
         <div class="w3-col l3 m6 w3-margin-bottom">
-          <img src="<%= asset_path('userAvatar.jpeg') %>" style="width:100%">
+          <img src="<%= asset_path('userAvatar.jpeg') %>" style="width:70%">
           <h3><%= user.name %></h3>
           <p class="w3-opacity"> Username: <%= user.username %> </p>
           <p> <%= button_to 'Details', admin_user_path(user), class: "w3-button w3-light-grey w3-block", method: :get%></p>

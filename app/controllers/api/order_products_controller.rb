@@ -15,12 +15,12 @@ class Api::OrderProductsController < ApiController
 
   def get_products_from_order
     order_product = OrderProduct.where(order_id: params[:order_id])
-    render json: order_product.as_json(OrderProduct::Json::LIST)
+    render json: {success: true, products: order_product.as_json(OrderProduct::Json::LIST)}
   end
 
   def show
     order_product = OrderProduct.where(id: params[:id])
-    render json: order_product.as_json(OrderProduct::Json::SHOW)
+    render json: {success: true, product: order_product.as_json(OrderProduct::Json::SHOW)}
   end
 
   protected

@@ -18,11 +18,15 @@ class Api::UsersController < ApiController
   end
 
   def create
-    user= User.new(load_user_params)
-    if user.save
-      render json: {success: true, message: 'User was created successfully.',user: user.as_json(User::Json::SHOW)}
+    if User.find_by(username: params[:username])
+      render json: {success: false, message: 'Nombre de usuario ya está en uso.'}
     else
-      render json: {success: false, message: 'Couldn\'t create user'}
+      user= User.new(load_user_params)
+      if user.save
+        render json: {success: true, message: 'User was created successfully.',user: user.as_json(User::Json::SHOW)}
+      else
+        render json: {success: false, message: 'Error al crear el usuario. Intente de nuevo.'}
+      end
     end
   end
 

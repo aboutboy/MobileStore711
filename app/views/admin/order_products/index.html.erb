@@ -1,7 +1,46 @@
-<% @order_products.each do |order_product| %>
-    <%= order_product.product.name %>
-    <%= order_product.amount %>
-    <br>
-<% end %>
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<%= link_to 'Back', admin_orders_path %>
+<!-- Nav Bar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
+    <%= link_to '7-Eleven Stores', root_path %>
+    <div class="w3-right w3-hide-small">
+      <%= link_to 'Stores', admin_stores_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Products', admin_products_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Users', admin_users_path, class: "w3-bar-item w3-button" %>
+      <%= link_to 'Orders', admin_orders_path, class: "w3-bar-item w3-button" %>
+
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Products in Order</h3>
+  </div>
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-8 w3-center">
+
+    <% @order_products.each do |order_product| %>
+        <div class="w3-quarter">
+          <img src="<%= asset_path( 'productImage.png' ) %>" style="width:70%">
+          <h3><%= order_product.product.name %></h3>
+          <h4>Quantity: <%= order_product.amount %></h4>
+        </div>
+    <% end %>
+
+
+  </div>
+
+  <div class="w3-container w3-padding-32">
+    <%= link_to 'Back', admin_orders_path ,class: "w3-button w3-red w3-section", method: :get %>
+  </div>
+</div>
+

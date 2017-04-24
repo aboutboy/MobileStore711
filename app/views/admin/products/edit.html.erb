@@ -24,14 +24,14 @@
 
   <!-- About Section -->
   <div class="w3-container w3-padding-32">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">New Product</h3>
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Edit Product</h3>
   </div>
 
   <div class="w3-container">
 
     <%= form_for [:admin,@product] do |f| %>
-        </h4><%= f.text_field :name, class: "w3-input w3-section", placeholder: "Name" %> <br>
-        <%= f.text_field :price, class: "w3-input w3-section", placeholder: "Price" %> <br>
+        <h4 class="w3-opacity">Name</h4><%= f.text_field :name, class: "w3-input w3-section", placeholder: "Name" %> <br>
+        <h4 class="w3-opacity">Price</h4><%= f.text_field :price, class: "w3-input w3-section", placeholder: "Price" %> <br>
 
         <%= f.submit 'Save' , class: "w3-button w3-black w3-section"%>
         <%= link_to 'Back', admin_products_path ,class: "w3-button w3-red w3-section", method: :get %>

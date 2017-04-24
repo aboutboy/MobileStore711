@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  has_many :product_stores
+  has_many :product_stores, dependent: :destroy
   has_many :stores, through: :product_stores
   has_many :order_products, dependent: :destroy
   has_many :orders, through: :order_products
